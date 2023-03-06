@@ -50,10 +50,11 @@ header h1 {
 }
 
 #quiz-field {
-   padding-left: 10%
+   padding-left: 10%;
 }
 
 #question-field {
+   justify-self: center;
     background-color: white;
     /* margin: 10px, 20%, 20px, 20%; */
     border: solid;
@@ -61,12 +62,15 @@ header h1 {
     border-radius: 10px;
     padding-top: 10px;
     padding-bottom: 15px;
+    padding-left: 5%;
     text-align: left;
 /* rem is nice in that it resizes for the browser, I'm trying to use it more */
     line-height: 3rem;
     font-size: 1.6rem;
     font-weight: bold;
     color: rgb(58, 57, 56);
+    width: fit-content;
+    min-width: 40%;
  }
 
 
@@ -74,6 +78,8 @@ header h1 {
    display: flex;
    flex-direction: column;
     margin-left: 5%;
+    width: fit-content;
+    padding: 1rem;
  }
 
 
@@ -116,8 +122,9 @@ header h1 {
    background-color: rgb(196, 202, 250);
    width: fit-content;
    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-   margin-left: 10%;
+   margin-left: 5%;
    border-style: solid;
+   line-height: 5rem;
  }
  /* placeholder */
 
@@ -128,12 +135,12 @@ header h1 {
 
  #quiz-end {
     color: rgb(29, 27, 21);
-    font-size: 3rem;
+    font-size: 2.5rem;
  }
 
  #splash-field {
    color: rgb(82, 0, 121);
    font-size: 4rem;
-   background-color: rgb(236, 236, 235);
+   background-color: rgb(255, 255, 161);
    width: fit-content;
  }

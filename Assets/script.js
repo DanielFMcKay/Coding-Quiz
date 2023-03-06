@@ -3,15 +3,13 @@
 var questNumber = -1;
 // the current score is left undefined, as defining it happens 
 // when the quiz starts and acts as a trigger for the timer
-let currentScore = undefined;
+let currentScore = 0;
 document.getElementById("times-up").style.display="none";
-document.getElementById("display-score").style.display="none";
-document.getElementById("quiz-end").style.display="none";
 
 
 const quizQuestion = [
   {
-    currentQuestion: "var:'0' is an example of what type of variable?",
+    currentQuestion: "var xVariable: '0' is an example of what type of variable?",
   // The choices are in an array.
     choices: ["boolean", "string", "number", "undefined"],
   // Each question has one objectively correct answer.
@@ -29,31 +27,41 @@ const quizQuestion = [
     rightAnswer: 3
   },
   {
-    currentQuestion: "Question 4?",
-    choices: ["1", "2", "3", "D"],
+    currentQuestion: "What does Undefined + 4 return?",
+    choices: ["NaN", "4", "'Undefined + 4''", "Null"],
     rightAnswer: 0
   },
-  {
-    currentQuestion: "Question 5?",
-    choices: ["1", "2", "3", "4"],
-    rightAnswer: 0
-  }
 ];
 
-function hideQuiz() {
-  document.getElementById("quiz-field").style.display="none";
+const displayScore = document.getElementById("display-score");
+
+const quizField = document.getElementById("quiz-field");
+
+const endDisplay = document.getElementById("quiz-end");
+
+function quizEnd() {
+  quizField.innerHTML = `You answeres ${currentScore} questions correctly`;
+}
+
+
+function showScore() {
+  if(questNumber >= 0) {
+    displayScore.style.display="visible";
+    displayScore.textContent = "Your current score is" + currentScore;
+  } else {
+    document.getElementById("display-score").style.display="none";
+  }
 }
 
 // declares variable for the timer and what class to attach it to
 let timeLeft = document.getElementById("timer");
 
 // ngl, I feel like this could all be simpler if there were shared naming formats between CSS and JS
-// const startButton = getElementById("start-button");
 // const startPage = getElementById("start-page");
 
 
 // declares variable for time remaining and where it starts
-let secondsLeft = 100;
+let secondsLeft = 80;
 // const questionField=document.getElementById("question-field");
 
 // declares the timer, which is inside the quiz field and thus only starts when the quiz does
@@ -72,19 +80,15 @@ function timerStart() {
   }, 1000);
 }
 
-
 let finalScore;
-let flexTime = secondsLeft;
 let currentQuiz;
-let startButton = document.getElementById("start-button");
+const startButton = document.getElementById("start-button");
 
 
 function quizStart() {
   questNumber = -1;
-  currentScore = 0;
+  let currentScore = 0;
   timerStart();
-  showScore();
-  console.log(currentScore);
   document.getElementById("start-page").style.display="none";
   document.getElementById("quiz-field").style.display="visible";
   showQuestion(quizQuestion);
@@ -92,13 +96,16 @@ function quizStart() {
 
 
 function showQuestion() {
+  showScore();
+  questNumber++;
   // automatically ends quiz after five questions
-  if (questNumber >= 5) {
+  if (questNumber >= 4) {
     return quizEnd();
   } else {
 
-  questNumber++;
   console.log(`current question is number ${questNumber}`);
+  console.log(`The current score is ${currentScore}`);
+  document.getElementById("display-score").textContent=currentScore;
 
 
   let currentQuiz = quizQuestion[questNumber];
@@ -128,15 +135,17 @@ function showQuestion() {
   ch3.textContent = currentQuiz.choices[2];
   ch4.textContent = currentQuiz.choices[3];
 
-  var quizField = document.getElementById("quiz-field");
+  // wipes the quiz area after each question
   quizField.innerHTML = "";
   quizField.appendChild(questionField);
-  // creates the buttons and links them to what they do
+  // deploys the response buttons and links them to what they do
   questionField.appendChild(buttonField);
   buttonField.appendChild(ch1);
   buttonField.appendChild(ch2);
   buttonField.appendChild(ch3);
   buttonField.appendChild(ch4);
+
+  console.log(questNumber);
 }
 
 function verify(q) {
@@ -147,41 +156,23 @@ function verify(q) {
   
   console.log(rightAnswerText);
   
+  // tells the user if they got a question right or not before moving on to the next question
   let splashResult = document.createElement("h1");
   var quizField = document.getElementById("quiz-field");
   quizField.appendChild(splashResult);
   if (q.target.textContent === rightAnswerText) {
       currentScore++;
       splashResult.textContent = "GIT R DUN!! (correct)";
-      secondsLeft = secondsLeft + 4;
+      secondsLeft = secondsLeft + 3;
   } else {
       splashResult.textContent = "Dagnammit!! (wrong)";
-      secondsLeft = secondsLeft - 8;
+      secondsLeft = secondsLeft - 9;
   }
   // closes the splash feedback and moves to the next question after 1 second
   setTimeout(showQuestion, 1000);
 }
 }
 
-
-  // let options = document.querySelectorAll('.choices');
-  // console.log(options);
-  // options.forEach(function(button, correct){
-  //   button.textContent = choice.choices[correct];
-
-  //   button.addEventListener('click', function() {
-  //     if (choice.rightAnswer == correct) {
-  //       currentScore ++;
-  //       flexTime -8;
-  //       console.log('Git R Dun!');
-  //       questNumber++;
-  //     } else {
-  //       flexTime +4;
-  //       console.log('dagnammit!');
-  //       questNumber++;
-  //     }
-  //   });
-  // });
 
 
 
@@ -198,16 +189,6 @@ function timesUp() {
 }
 
 
-
-function showScore() {
-  if(questNumber>=0) {
-    document.getElementById("display-score").style.display="visible";
-    document.getElementById("display-score").textContent=currentScore;
-  } else {
-    document.getElementById("display-score").style.display="none";
-  }
-}
-
 // displays start page and hides quiz, then the opposite once the quiz has started and a starting score is defined
 function showQuiz() {
   if(currentScore===undefined) {
@@ -220,6 +201,14 @@ function showQuiz() {
 }
 
 
+function quizEnd() {
+  quizField.innerHTML = `You answered ${currentScore} questions correctly.`;
+  // var quizField = document.createElement("h1");
+  // quizField.appendChild(endDisplay);
+  // endDisplay.textcontent = `You answered ${currentScore} questions correctly.`;
+
+}
+
 // function finishGame() {
 //   // placeholder
 // }
@@ -227,21 +216,3 @@ function showQuiz() {
 // document.getElementById("elementId").style.display="none"
 
 
-
-
-
-
-// This actually puts the question and choices... maybe?
-
-
-
-
-// Shows the questions
-// showQuestion(quizQuestion);
-
-// We need the buttons to actually register that a choice has been made. Being clicked is good.
-// placeholder code
-// let btn = document.getElementById('btn');
-// btn.addEventListener('click', function() {
-//   console.log('Clicked!');
-// });
