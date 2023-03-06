@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coding Quiz</title>
+  <link rel="stylesheet" type="text/css" href="./Assets/css/style.css">
+</head>
+<body>
+    <header>
+    <h1 class="Title";>Coding 101 Quiz</h1>
+  </header>
+
+  <section id="start-page">
+        <p>Please answer the following five questions in the time alloted. You will get additional time for correct answers 
+          and lose time for incorrect answers. The quiz will end when you either finish or time runs out.</p><br>
+        <button onclick="quizStart()"  id="start-button">Press Start to Begin</button>
+  </section>
+
+    <section id="quiz-field">
+      <h2 id="timer"></h2>
+
+      <section id="question-field"><h2"></h2></section>
+      <section id="button-field">
+       <ul>
+         <button class="choices" id="btn-one"></button><br>
+         <button class="choices" id="btn-two"></button><br>
+         <button class="choices" id="btn-three"></button><br>
+         <button class="choices" id="btn-four"></button><br>
+       </ul>
+      </section><br>
+      <section id="display-score"></section>
+      <section id="times-up"><h2>Times Up!</h2></section>
+      <section id="quiz-end"><h2>placeholder</h2></section>
+    </section>
+    <script src="./Assets/script.js"></script>
+</body>
+</html>

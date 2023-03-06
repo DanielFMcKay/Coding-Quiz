@@ -1,0 +1,131 @@
+
+html {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+body {
+    display: block;
+    margin: 0px;
+    background-color: rgb(226, 235, 241);
+  }
+
+header h1 {
+    text-align: center;
+    font-size: 3.6rem;
+}
+
+#timer {
+   text-align: left;
+   font-size: 2rem;
+   padding-left: 10%;
+}
+
+#timer::before {
+   content: "Time Remaining: ";
+ }
+
+#start-page {
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-wrap: wrap;
+    line-height: 1.6rem;
+    font-size: 1.4rem;   
+ }
+
+#start-button {
+   text-align: center;
+   border-radius: 25px;
+   box-shadow: rgb(27, 27, 27) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+     0px;
+   color: hsl(0, 0%, 100%);
+   background-color: rgb(0, 114, 70);
+   margin: 16px;
+   padding: 1rem 2rem;
+   cursor: pointer;
+   font-size: 1.5rem;
+   line-height: 2rem;
+   width: fit-content;
+}
+
+#quiz-field {
+   padding-left: 10%
+}
+
+#question-field {
+    background-color: white;
+    /* margin: 10px, 20%, 20px, 20%; */
+    border: solid;
+/* curved borders are pretty */
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    text-align: left;
+/* rem is nice in that it resizes for the browser, I'm trying to use it more */
+    line-height: 3rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: rgb(58, 57, 56);
+ }
+
+
+ #button-field {
+   display: flex;
+   flex-direction: column;
+    margin-left: 5%;
+ }
+
+
+#btn-one,
+#btn-two,
+#btn-three,
+#btn-four {
+    text-align: left;
+    border-radius: 25px;
+    box-shadow: rgb(27, 27, 27) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+      0px;
+    color: hsl(0, 0%, 100%);
+    margin: 16px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    width: fit-content;
+ }
+
+
+ 
+ #btn-one {
+    background-color: rgb(0, 34, 184) ;
+ }
+ #btn-two {
+    background-color: rgb(0, 126, 88);
+ }
+ #btn-three {
+    background-color: rgb(152, 32, 221);
+ }
+ #btn-four {
+    background-color: rgb(194, 110, 14);
+ } 
+ 
+ #display-score {
+   font-size: 5rem;
+   color: black;
+   background-color: rgb(196, 202, 250);
+   width: fit-content;
+   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+   margin-left: 10%;
+   border-style: solid;
+ }
+
+ /* placeholder */
+#times-up {
+   color: black;
+   font-size: 4rem;
+}
+
+ #quiz-end {
+    font-size: 3rem;
+ }
