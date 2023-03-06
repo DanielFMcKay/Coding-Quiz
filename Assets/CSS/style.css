@@ -119,13 +119,21 @@ header h1 {
    margin-left: 10%;
    border-style: solid;
  }
-
  /* placeholder */
+
 #times-up {
    color: black;
-   font-size: 4rem;
+   font-size: 3.5rem;
 }
 
  #quiz-end {
+    color: rgb(29, 27, 21);
     font-size: 3rem;
+ }
+
+ #splash-field {
+   color: rgb(82, 0, 121);
+   font-size: 4rem;
+   background-color: rgb(236, 236, 235);
+   width: fit-content;
  }
