@@ -1,6 +1,6 @@
 
 html {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
    margin-left: 10%;
    margin-right: 10%;
 }
@@ -23,6 +23,7 @@ header h1 {
 }
 
 #timer::before {
+   font-size: 1.8rem;
    content: "Time Remaining: ";
  }
 
@@ -41,7 +42,8 @@ header h1 {
      0px;
    color: hsl(0, 0%, 100%);
    background-color: rgb(0, 114, 70);
-   margin: 16px;
+   margin-top: 10px;
+   margin-bottom: 10px;
    padding: 1rem 2rem;
    cursor: pointer;
    font-size: 1.5rem;
@@ -49,28 +51,31 @@ header h1 {
    width: fit-content;
 }
 
+
 #quiz-field {
+   padding-top: 4px;
    padding-left: 10%;
+   padding-right: 10%;
+   font-size: 2rem;
 }
 
 #question-field {
    justify-self: center;
     background-color: white;
-    /* margin: 10px, 20%, 20px, 20%; */
     border: solid;
-/* curved borders are pretty */
+/* curved corners are pretty */
     border-radius: 10px;
     padding-top: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     padding-left: 5%;
     text-align: left;
 /* rem is nice in that it resizes for the browser, I'm trying to use it more */
-    line-height: 3rem;
+    line-height: 2.4rem;
     font-size: 1.6rem;
     font-weight: bold;
     color: rgb(58, 57, 56);
     width: fit-content;
-    min-width: 40%;
+    min-width: 60%;
  }
 
 
@@ -117,25 +122,34 @@ header h1 {
  } 
  
  #display-score {
-   font-size: 5rem;
+   font-size: 2rem;
    color: black;
    background-color: rgb(196, 202, 250);
+   border-radius: 6px;
    width: fit-content;
+   min-width: 13.2rem;
    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-   margin-left: 5%;
+   margin-left: 11%;
    border-style: solid;
-   line-height: 5rem;
+   line-height: 4rem;
  }
  /* placeholder */
 
 #times-up {
-   color: black;
-   font-size: 3.5rem;
+   color: rgb(70, 17, 1);
+   font-size: 3rem;
 }
 
- #quiz-end {
-    color: rgb(29, 27, 21);
-    font-size: 2.5rem;
+ #quiz-result {
+    display: inline-block;
+    align-content: center;
+    color: black;
+    background-color: rgb(196, 202, 250);
+    border: solid;
+    border-radius: 6px;
+    padding: 6px;
+    width: fit-content;   
+    font-size: 2rem;
  }
 
  #splash-field {
@@ -143,4 +157,16 @@ header h1 {
    font-size: 4rem;
    background-color: rgb(255, 255, 161);
    width: fit-content;
+ }
+
+ #msg-error {
+   font-size: 3rem;
+   color: #74092d;
+ }
+ 
+ #high-scores {
+   margin-top: 2rem;
+   color: black;
+   text-align: center;
+   font-size: 2.5rem;
  }
