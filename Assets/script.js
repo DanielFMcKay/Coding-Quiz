@@ -4,14 +4,27 @@ var questNumber = -1;
 // the current score is left undefined, as defining it happens 
 // when the quiz starts and acts as a trigger for the timer
 let currentScore = 0;
-const highScores = document.getElementById("high-scores");
-highScores.style.visibility = 'hidden';
+
+// temporarily hiding the parts of the page not yet needed. Which is like, most of them.
+
 const displayScore = document.getElementById("display-score");
 displayScore.style.visibility = 'hidden';
+const highScores = document.getElementById("high-scores");
+highScores.style.visibility = 'hidden';
 const quizResult = document.getElementById("quiz-result");
 quizResult.style.visibility = 'hidden';
+var enterInitials = document.getElementById("enter-initials");
+enterInitials.style.visibility = 'hidden';
+const initialsBtn = document.getElementById("enter-initials-btn");
+initialsBtn.style.visibility = 'hidden';
+const initialsField = document.getElementById("initials");
+initialsField.style.visibility = 'hidden';
+const finalBtns = document.getElementById("final-buttons");
+finalBtns.style.visibility = 'hidden';
+const homePageBtn = document.getElementById("home-page-btn");
+const clearScores = document.getElementById("clear-scores-btn");
 
-
+const startButton = document.getElementById("start-button");
 
 const quizQuestion = [
   {
@@ -44,14 +57,13 @@ const quizField = document.getElementById("quiz-field");
 const endDisplay = document.getElementById("quiz-end");
 
 
-
-
 // declares variable for the timer and what class to attach it to
 let timeLeft = document.getElementById("timer");
 
 
 // declares variable for time remaining and where it starts
-let secondsLeft = 80;
+let secondsLeft = 75;
+var finalScore;
 
 // declares the timer, which is inside the quiz field and thus only starts when the quiz does
 function timerStart() {
@@ -69,9 +81,8 @@ function timerStart() {
   }, 1000);
 }
 
-let finalScore;
+var finalScore;
 let currentQuiz;
-const startButton = document.getElementById("start-button");
 
 
 function quizStart() {
@@ -163,41 +174,89 @@ function verify(q) {
 
 
 
-
+// quiz end if the score ends due to time being up (includling if you drop below zero by getting the last question wrong)
 function timesUp() {
   quizResult.style.visibility='visible';
   quizField.style.display='none';
   quizResult.innerHTML = `You answered ${currentScore} questions correctly. Also, Time's Up!`;
   displayScore.style.display='none';
   secondsLeft===undefined;
+  // completely hides the timer
   document.getElementById("timer").style.display="none";
-  var timesOver = document.createElement("h1");
-  timesOver.setAttribute("id", "times-up");
-  timesOver.innerHTML = "Time's Up!";
   finalScore = currentScore;
-  document.getElementById("high-scores").style.visibility="visible";
+  // reveals all the highscore elements
+  enterInitials.style.visibility = 'visible';
+  initialsBtn.style.visibility = 'visible';
+  initialsField.style.visibility = 'visible';
+  highscores.style.visibility="visible";
 }
 
 
 // displays start page and hides quiz, then the opposite once the quiz has started and a starting score is defined
 
 
+// quiz end if you finish the last question without running out of time
 function quizEnd() {
   quizResult.style.visibility='visible';
   quizField.style.display='none';
   quizResult.innerHTML = `You answered ${currentScore} questions correctly.`;
   displayScore.style.display='none';
   finalScore = currentScore;
-  // hides the timer
   document.getElementById("timer").style.display="none";
-  // bypasses the timer to prevent the "Time's Up!" trigger
+  // bypasses the timer's countdown to prevent the "Time's Up!" trigger
   secondsLeft=undefined;
-  document.getElementById("high-scores").style.visibility="visible";
+// if I were to do all these same reveals in more than two different conditions, I'd just make it its own function probably. But it's just twice.
+  enterInitials.style.visibility = 'visible';
+  initialsBtn.style.visibility = 'visible';
+  initialsField.style.visibility = 'visible';
+  highScores.style.visibility="visible";
 }
 
 
 
+// still working on this
+function renderLatestScores() {
+  // Retrieve the submitted Initials and render it to the page
+  if (!localStorage.getItem('initials')) {
+    intialsOutput.textContent = 'N/A';
+  } else {
+    intialsOutput.textContent = localStorage.getItem('initials')
+  }
+}
 
+
+  initialsBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var initialsStored = initialsField.value;
+
+
+  if (initials === "") {
+    finalBtns.style.visibility = 'visible';
+    return;
+  } else {
+    submitMsg.textContent = "score submitted";
+// stores score to local storage
+    localStorage.setItem('initials', JSON.stringify(initialsStored));
+    localStorage.setItem('final score', finalScore);
+// shows Home Page and Clear Scores buttons
+    finalBtns.style.visibility = 'visible';
+
+    renderLatestScores();
+  }
+});
+
+// returns you to the home page if you wish, regardless of whether you wish to enter your initials and submit your score
+const reloadPage = () => {
+  location.reload();
+}
+homePageBtn.addEventListener('click', reloadPage);
+
+
+
+clearScores.addEventListener("click", function () {
+  localStorage.clear();  
+});
 
 
 // function finishGame() {
