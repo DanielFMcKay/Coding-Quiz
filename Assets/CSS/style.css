@@ -9,6 +9,8 @@
 header {
    background-color: var(--chill);
    border: solid;
+   margin-top: 8px;
+   border-radius: 8px;
 }
 
 

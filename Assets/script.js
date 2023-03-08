@@ -227,20 +227,17 @@ function renderLatestScores() {
 
   initialsBtn.addEventListener("click", function (event) {
   event.preventDefault();
-
+// shows Home Page and Clear Scores buttons
+  finalBtns.style.visibility = 'visible';
   var initialsStored = initialsField.value;
 
-
   if (initials === "") {
-    finalBtns.style.visibility = 'visible';
     return;
   } else {
     submitMsg.textContent = "score submitted";
 // stores score to local storage
     localStorage.setItem('initials', JSON.stringify(initialsStored));
     localStorage.setItem('final score', finalScore);
-// shows Home Page and Clear Scores buttons
-    finalBtns.style.visibility = 'visible';
 
     renderLatestScores();
   }
