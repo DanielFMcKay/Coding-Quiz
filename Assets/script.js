@@ -10,7 +10,7 @@ let currentScore = 0;
 const displayScore = document.getElementById("display-score");
 displayScore.style.visibility = 'hidden';
 const highScores = document.getElementById("high-scores");
-highScores.style.visibility = 'hidden';
+// highScores.style.visibility = 'hidden';
 const quizResult = document.getElementById("quiz-result");
 quizResult.style.visibility = 'hidden';
 var enterInitials = document.getElementById("enter-initials");
@@ -21,10 +21,13 @@ const initialsField = document.getElementById("initials");
 initialsField.style.visibility = 'hidden';
 const finalBtns = document.getElementById("final-buttons");
 finalBtns.style.visibility = 'hidden';
+const scoresList = document.getElementById("scores-list");
 const homePageBtn = document.getElementById("home-page-btn");
 const clearScores = document.getElementById("clear-scores-btn");
 
 const startButton = document.getElementById("start-button");
+
+
 
 const quizQuestion = [
   {
@@ -213,15 +216,40 @@ function quizEnd() {
 }
 
 
+// function below in theory loads the previous scores
 
-// still working on this
+// function to display scores. Still working on it.
 function renderLatestScores() {
-  // Retrieve the submitted Initials and render it to the page
-  if (!localStorage.getItem('initials')) {
-    intialsOutput.textContent = 'N/A';
-  } else {
-    intialsOutput.textContent = localStorage.getItem('initials')
+  // for (var i = 0; i < highScoresList.length; i++) {
+  //   var playerEntry = highScoresList[i];
+  //   console.log(`PlayerEntry variable is ${playerEntry}`);
+    var entry = document.createElement('li');
+    // li.textContent = playerEntry;
+    entry.textContent = `${localStorage.getItem('initials')}:  ${localStorage.getItem('final score')}`;
+    console.log(`li.textcontent is ${entry.textcontent}`)
+    entry.setAttribute('id', 'scores-list');
+    scoresList.append(entry);
+  } console.log(`errorfieldrender`);
+
+
+
+
+function quizDataInit() {
+  var storedScores = JSON.parse(localStorage.getItem('scores'));
+  if (storedScores !== null) {
+    highScoresList = storedScores;
   }
+  renderLatestScores();
+  console.log(`errorfield1`);
+}
+// I have to declare this twice or for some reason the program breaks
+var initialsStored = initialsField.value.trim();
+
+
+var highScoresList = [initialsStored, finalScore];
+
+function storeScores() {
+  localStorage.setItem('scores', JSON.stringify(highScoresList));
 }
 
 
@@ -229,19 +257,25 @@ function renderLatestScores() {
   event.preventDefault();
 // shows Home Page and Clear Scores buttons
   finalBtns.style.visibility = 'visible';
-  var initialsStored = initialsField.value;
+var initialsStored = initialsField.value.trim();
 
-  if (initials === "") {
+
+  if (initialsStored === "") {
     return;
   } else {
-    submitMsg.textContent = "score submitted";
-// stores score to local storage
-    localStorage.setItem('initials', JSON.stringify(initialsStored));
+// stores score and initials to local storage
+    localStorage.setItem('initials', initialsStored);
     localStorage.setItem('final score', finalScore);
 
+    storeScores();
     renderLatestScores();
+    console.log(`errorfield2`);
   }
 });
+
+
+
+
 
 // returns you to the home page if you wish, regardless of whether you wish to enter your initials and submit your score
 const reloadPage = () => {
@@ -252,14 +286,11 @@ homePageBtn.addEventListener('click', reloadPage);
 
 
 clearScores.addEventListener("click", function () {
-  localStorage.clear();  
+  localStorage.clear(); 
+  scoresList.innerHTML = ""; 
 });
 
 
-// function finishGame() {
-//   // placeholder
-// }
-
-// document.getElementById("elementId").style.display="none"
+quizDataInit();
 
 
