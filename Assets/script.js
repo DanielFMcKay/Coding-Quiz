@@ -10,7 +10,7 @@ let currentScore = 0;
 const displayScore = document.getElementById("display-score");
 displayScore.style.visibility = 'hidden';
 const highScores = document.getElementById("high-scores");
-// highScores.style.visibility = 'hidden';
+highScores.style.visibility = 'hidden';
 const quizResult = document.getElementById("quiz-result");
 quizResult.style.visibility = 'hidden';
 var enterInitials = document.getElementById("enter-initials");
@@ -238,9 +238,9 @@ function quizDataInit() {
   var storedScores = JSON.parse(localStorage.getItem('scores'));
   if (storedScores !== null) {
     highScoresList = storedScores;
-  }
   renderLatestScores();
   console.log(`errorfield1`);
+}
 }
 // I have to declare this twice or for some reason the program breaks
 var initialsStored = initialsField.value.trim();
