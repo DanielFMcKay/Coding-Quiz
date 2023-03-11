@@ -16,33 +16,30 @@ SO THAT I can gauge my progress compared to my peers
 
 Direct Link: https://danielfmckay.github.io/Coding-Quiz/
 
-
-## Acceptance Criteria
+## Coding Quiz Description
 
 ```
-GIVEN I am taking a code quiz
+# Per instructions, I made a timed, multiple-choice coding quiz that subtracts time when someone enters the wrong answer. It has four questions.
 
-WHEN I click the start button
-THEN a timer starts and I am presented with a question ✓
+# The quiz itself is hidden until the Start Button is pushed. That is also when the timer starts.
 
-WHEN I answer a question
-THEN I am presented with another question ✓
+# There is a display of the current score, as well as a flashing confirmation for 1 second after each answer to show whether the answer was corrent or not.
 
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock ✓
-note: a few seconds are also added if you get a question right
+# While 9 seconds are subtracted for each wrong answer, 3 are added for each correct one.
 
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over ✓
+# Once all the questions are added or time runs out, the question field removes itself and there the user may enter their initials and submit their score.
 
-ALSO: At Least 2 questions, preferably at least 3 ✓
-note: there are 4 questions.
+# A button to clear scores and a separate one to return to homepage pop up after that button is pressed, but if no initials are entered, nothing else happens.
 
-WHEN the game is over
-THEN I can save my initials and my score 
-note: this is not complete, although there is a field for saving them now.
+# If the user enters their initials, they are added to an array. If the array has nothing in it yet, it is first declared as an empty array before this happened. The "Recent Scores" list then reveals itself.
 
-Another Direct Link in case you like to scroll down fast: https://danielfmckay.github.io/Coding-Quiz/
+# All initials and scores are retrieved from the array at this point and listed via a for loop from newest to oldest by prepending them to the field attached to the "Recent Scores" title.
+
+# Everything is stored in local storage unless the scores are cleared by the user.
+
+Note: some of the ID tags and function names are slight misnomers, leftover from earlier in the project. The ones I've left in are because they're close enough to be intuited and don't hurt anything (e.g. "high-scores" actually refers to a list of "recent scores"). Also there are numerous notes throughout the code to help explain things.
+
+Another Direct Link for folks who like to scroll down first before looking: https://danielfmckay.github.io/Coding-Quiz/
 
 ```
 
