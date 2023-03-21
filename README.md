@@ -18,7 +18,7 @@ Direct Link: https://danielfmckay.github.io/Coding-Quiz/
 
 ## Coding Quiz Description
 
-```
+
 # Per instructions, I made a timed, multiple-choice coding quiz that subtracts time when someone enters the wrong answer. It has four questions.
 
 # The quiz itself is hidden until the Start Button is pushed. That is also when the timer starts.
@@ -41,5 +41,5 @@ Note: some of the ID tags and function names are slight misnomers, leftover from
 
 Another Direct Link for folks who like to scroll down first before looking: https://danielfmckay.github.io/Coding-Quiz/
 
-```
+
 
