@@ -1,10 +1,16 @@
+# Coding Quiz - a Web API Assignment
+![image](https://img.shields.io/badge/License-MIT-slateblue.svg)
+
+### by Dan McKay
+
 ![image](https://user-images.githubusercontent.com/123746582/223169852-599b92a1-a183-490f-83f7-4ac29affa8b7.png)
 
-# 04 Web APIs: Code Quiz
+### Overview 
 
-#Note: although it has now reached some functionality, this is currently incomplete and a work in progress
+* This is an assignment for week 4 of BootCamp Spot's Full Stack Coding Bootcamp, as offered by UC Berkeley continuing education.
 
-It does function as a quiz, removing and revealing elements of the page as necessary and the styling elements are also basically done. It will store initials and score to Local Storage but only once at the moment. Will work on it later.
+
+This app functions as a timed quiz, removing and revealing elements of the page as necessary. It will also store the users initials and score to Local Storage, but possibly only once.
 
 ## User Story
 
@@ -12,6 +18,7 @@ It does function as a quiz, removing and revealing elements of the page as neces
 #### I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 #### SO THAT I can gauge my progress compared to my peers
 
+### Live Site
 
 Direct Link: https://danielfmckay.github.io/Coding-Quiz/
 
@@ -38,7 +45,13 @@ Direct Link: https://danielfmckay.github.io/Coding-Quiz/
 
 Note: some of the ID tags and function names are slight misnomers, leftover from earlier in the project. The ones I've left in are because they're close enough to be intuited and don't hurt anything (e.g. "high-scores" actually refers to a list of "recent scores"). Also there are numerous notes throughout the code to help explain things.
 
-Another Direct Link for folks who like to scroll down first before looking: https://danielfmckay.github.io/Coding-Quiz/
+Here is another Direct Link for folks who like to scroll down first before looking: https://danielfmckay.github.io/Coding-Quiz/
+
+## License
+
+This app falls under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+(c) Dan McKay 2023
 
 
 
